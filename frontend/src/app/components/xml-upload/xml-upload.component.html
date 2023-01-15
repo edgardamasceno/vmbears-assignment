@@ -1,0 +1,53 @@
+<mat-form-field class="xml-upload-input" color="primary">
+  <span>
+    <input matInput value="Clique para selecionar os arquivos:" readonly="true"/>
+    <input
+      type="file"
+      id="fileInput"
+      (change)="selectFile($event)"
+      name="fileInput"
+      accept=".xml"
+      multiple
+    />
+  </span>
+</mat-form-field>
+
+<mat-card *ngIf="uploadFiles.length">
+  <mat-card-header>
+    <mat-card-title >Arquivos:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of uploadFiles">
+        <div class="fileProgress">
+          <span class="text" [ngClass]="{'failure': (item.progress | async) === 'Falha'}">
+            <span class="label">{{ item.file.name }}</span>
+            <span class="progress" *ngIf="item.progress | async">{{ item.progress | async }}<span *ngIf="(item.progress | async) != 'Falha'"> %</span></span>
+          </span>
+          <mat-progress-bar *ngIf="(item.progress | async) === 'Falha'"
+            color="warn"
+          />
+          <mat-progress-bar *ngIf="(item.progress | async) === undefined"
+            color="primary"
+            mode="indeterminate"
+          />
+          <mat-progress-bar *ngIf="(item.progress | async) != 'Falha' && (item.progress | async) != undefined"
+            color="primary"
+            mode="determinate"
+            [value]="item.progress | async"
+          ></mat-progress-bar>
+          <div class="link" *ngIf="(item.importId | async)">
+            <a href="http://localhost:8080/consolidacao/{{ item.importId | async }}" target="_blank">Consolidação #{{ item.importId | async }}</a>
+          </div>
+        </div>
+
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+
+<div class="uploading-overlay" *ngIf="uploading > 0">
+  <span class="uploading-text">{{ textProgress }}</span>
+
+  <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+</div>

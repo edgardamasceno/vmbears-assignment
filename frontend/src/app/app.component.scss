@@ -1,0 +1,34 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  main {
+    width: 600px;
+    margin: 20px auto;
+    flex: 1;
+  }
+  footer {
+    display: inline-flex;
+    justify-content: space-between;
+    background-color: #3F50B5;
+    padding: 20px;
+    text-align: right;
+    color: #fff;
+    span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      mat-icon{
+        color:#fff;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

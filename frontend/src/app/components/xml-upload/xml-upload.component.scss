@@ -1,0 +1,97 @@
+mat-form-field {
+  width: 100%;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #fileInput {
+      position: absolute;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      left: 0px;
+      top: 0px;
+    }
+  }
+}
+
+mat-card {
+  box-shadow: none;
+  border: none;
+  background-color: rgb(245, 245, 245);
+  border-radius: 4px 4px 0 0;
+  border-bottom: #000 solid 1px;
+  &:hover{
+    border-bottom: #3F50B5 solid 2px;
+    background-color: #ECECEC;
+  }
+  mat-card-title{
+    color: #3F50B5;
+  }
+  mat-card-content{
+    padding: 0;
+  }
+  mat-list-item{
+    margin-bottom: 10px;
+    min-height: 50px;
+  }
+  .text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #3F50B5;
+    .label{
+      font-style: italic;
+    }
+    .progress{
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+  .failure{
+    color: #F44336 !important;
+  }
+  .fileProgress{
+    width: 100%;
+    height: 50px;
+    .link{
+      width: 100%;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 12px;
+      a{
+        color: #FF3F80;
+        text-decoration: underline;
+      }
+    }
+  }
+
+
+}
+
+.uploading-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.75);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  .uploading-text{
+    color: #FF3F80;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  mat-progress-bar{
+    width: 240px;
+  }
+}
